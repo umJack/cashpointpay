@@ -7,28 +7,13 @@ import requests
 import json
 import os
 from datetime import datetime
-from google.colab import auth, drive
-from google.auth import default
-import gspread
 import ipywidgets as widgets
 from ipywidgets import GridspecLayout, Button, Layout, Box, VBox, HBox, Label, Text, Dropdown, Output
 from IPython.display import HTML, display, clear_output
 
-# 必要なライブラリをインストール
-!pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
-
-# Google Driveをマウント
-drive.mount('/content/drive')
-
-# Google認証
-auth.authenticate_user()
-# 最新の認証方法を使用
-credentials, _ = default()
-gc = gspread.authorize(credentials)
-
 # 設定を保存するファイル
-CONFIG_FILE = '/content/drive/MyDrive/CashPointPay/config.json'
-TRANSACTION_SHEET = '/content/drive/MyDrive/CashPointPay/transactions.csv'
+CONFIG_FILE = 'config.json'
+TRANSACTION_SHEET = 'transactions.csv'
 
 # 初期設定の確認と作成
 def ensure_config():
